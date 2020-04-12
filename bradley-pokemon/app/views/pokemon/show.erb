@@ -1,7 +1,7 @@
 <h3><%= @pokemon.name %></h3>
 
-<p><%= @pokemon.nickname %></p>
-<p><%= @pokemon.level %></p>
+<p>Nickname:<%= @pokemon.nickname %></p>
+<p>Level:<%= @pokemon.level %></p>
 
 
 <% if Helpers.current_user(session) == @pokemon.user %>
