@@ -6,7 +6,13 @@ class PokemonController < ApplicationController
     end
 
     get '/pokemon/new' do
-        if !Helpers.logged_in?(session)
+        @pokemon_name = Pokemon.find_by(name: params[:name])
+        @pokemon_nickname = Pokemon.find_by(nickname: params[:nickname])
+        
+        # binding.pry
+        if !Helpers.logged_in?(session) 
+            redirect to '/'
+        elsif @pokemon_name == "" || @pokemon_nickname == ""
             redirect to '/'
         end
         erb :'pokemon/new'
@@ -41,7 +47,7 @@ class PokemonController < ApplicationController
 
     patch '/pokemon/:id' do
         pokemon = Pokemon.find_by(id: params[:id])
-        if pokemon && pokemon.user == Helper.current_user(session)
+        if pokemon && pokemon.user == Helpers.current_user(session)
             pokemon.update(params[:pokemon])
             redirect to "/pokemon/#{pokemon.id}"
         else

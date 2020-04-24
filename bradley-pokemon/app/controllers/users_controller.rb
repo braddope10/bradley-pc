@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     get '/users' do 
         if Helpers.logged_in?(session)
             @users = User.all
+            @users.sort_by { |user| user.username}
         else
             redirect to '/'
         end

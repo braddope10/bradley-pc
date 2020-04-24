@@ -2,6 +2,6 @@
 
 <ul>
 <% @pokemon.each do |poke| %>
-  <li><a href="/pokemon/<%=poke.id %>"><%=poke.name %></a></li>
+  <li><a href="/pokemon/<%=poke.id %>"><%=poke.name %></a> belongs to <%= poke.user.username %></li>
 <%end%>
 </ul>
