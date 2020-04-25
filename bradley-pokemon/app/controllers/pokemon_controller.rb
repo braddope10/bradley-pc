@@ -1,19 +1,22 @@
 class PokemonController < ApplicationController
 
     get '/pokemon' do
+        # current_users = Helpers.current_user(session).username
         @pokemon = Pokemon.all 
+        #  @pokemon = @pok.current_users
+        #  binding.pry
         erb :'pokemon/index'
     end
 
     get '/pokemon/new' do
-        @pokemon_name = Pokemon.find_by(name: params[:name])
-        @pokemon_nickname = Pokemon.find_by(nickname: params[:nickname])
+        # @pokemon_name = Pokemon.find_by(name: params[:name])
+        # @pokemon_nickname = Pokemon.find_by(nickname: params[:nickname])
         
         # binding.pry
         if !Helpers.logged_in?(session) 
             redirect to '/'
-        elsif @pokemon_name == "" || @pokemon_nickname == ""
-            redirect to '/'
+        # elsif @pokemon_name == "" || @pokemon_nickname == ""
+            # redirect to '/'
         end
         erb :'pokemon/new'
     end
@@ -22,7 +25,11 @@ class PokemonController < ApplicationController
         pokemon = Pokemon.create(params)
         user = Helpers.current_user(session)
         pokemon.user = user
+        # if pokemon.name == "" || pokemon.nickname == ""
+            # redirect to '/pokemon/new'
+        # end
         pokemon.save
+
         redirect to "/users/#{user.id}"
     end
 
