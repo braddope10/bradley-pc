@@ -22,9 +22,6 @@
 
 After checking out the repo, run `bundle install` to install dependencies. You can also run `tux` for an prompt that will allow you to experiment with objects and your migrations in the database.
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[rshield1]/binge-rater. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct].
 
 ## License
 
