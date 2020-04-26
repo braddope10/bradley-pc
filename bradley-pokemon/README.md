@@ -14,7 +14,7 @@
     3. To test out application, run the gem "shotgun" by typing "shotgun" in your terminal. 
     This will create a new local server on your computer
     
-    4. Open up a browser to follow link to server, and enjoy adding new shows to the application
+    4. Open up a browser to follow link to server or copy & paste 'localhost:9393', and enjoy adding/editing your pokemon team in the application
 
     5. Create an account, view your competitors pokemon, create your pokemon, edit your pokemon, and delete them as well
 
