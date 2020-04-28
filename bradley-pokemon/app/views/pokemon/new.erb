@@ -2,9 +2,9 @@
 
 <form action="/pokemon" method="post">
     <label>Name: </label>
-    <input type="text" name="name" /><br/>
+    <input type="text" name="name" required/><br/>
     <label>Nickname: </label>
-    <input type="text" name="nickname" /><br/>
+    <input type="text" name="nickname" required/><br/>
     <label>Level: </label>
     <input type="number" name="level" id="level" min="0" max="100" value="0" required/><br/>
     <input type="submit" value="Create Pokemon">

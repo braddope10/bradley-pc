@@ -10,8 +10,6 @@ class PokemonController < ApplicationController
     get '/pokemon/new' do
         if !Helpers.logged_in?(session) 
             redirect to '/'
-        # elsif 
-        #     redirect to '/pokemon/new' do
         end
         erb :'pokemon/new'
     end
@@ -20,9 +18,8 @@ class PokemonController < ApplicationController
         pokemon = Pokemon.create(params)
         user = Helpers.current_user(session)
         pokemon.user = user
-        # binding.pry
-
-        if pokemon[:name] == "" || pokemon[:nickname].empty?
+        # Protection against bad data
+        if pokemon[:name].empty? || pokemon[:nickname].empty?
             pokemon.destroy
             redirect to '/pokemon/new'
         end
