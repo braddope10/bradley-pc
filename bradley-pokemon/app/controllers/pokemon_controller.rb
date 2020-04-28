@@ -18,15 +18,15 @@ class PokemonController < ApplicationController
 
     post '/pokemon' do
         pokemon = Pokemon.create(params)
-        binding.pry
         user = Helpers.current_user(session)
         pokemon.user = user
-        
-        if pokemon.empty?
+        # binding.pry
+
+        if pokemon[:name] == "" || pokemon[:nickname].empty?
+            pokemon.destroy
             redirect to '/pokemon/new'
-        else
-            pokemon.save
         end
+        pokemon.save
 
         redirect to "/users/#{user.id}"
     end
