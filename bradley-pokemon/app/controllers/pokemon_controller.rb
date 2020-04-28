@@ -15,12 +15,12 @@ class PokemonController < ApplicationController
     end
 
     post '/pokemon' do
-        pokemon_test = Pokemon.new(params) #.new only generates the object and doesn't save it like .create
+        pokemon_test = Pokemon.new(params) #.new only generates the object 
         #BAD DATA PROTECTION
         if pokemon_test[:name].empty? || pokemon_test[:nickname].empty? || pokemon_test[:level] == nil
             redirect to '/pokemon/new'
         else
-            pokemon = Pokemon.create(params)
+            pokemon = Pokemon.create(params) #.create generates and saves the object
             user = Helpers.current_user(session)
             pokemon.user = user
             pokemon.save
