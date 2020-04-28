@@ -18,7 +18,6 @@ class PokemonController < ApplicationController
         pokemon = Pokemon.create(params)
         user = Helpers.current_user(session)
         pokemon.user = user
-        # binding.pry
         # Protection against bad data
         if pokemon[:name].empty? || pokemon[:nickname].empty? || pokemon[:level] == nil
             pokemon.destroy
