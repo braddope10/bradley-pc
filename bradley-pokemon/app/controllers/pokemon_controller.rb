@@ -10,15 +10,23 @@ class PokemonController < ApplicationController
     get '/pokemon/new' do
         if !Helpers.logged_in?(session) 
             redirect to '/'
+        # elsif 
+        #     redirect to '/pokemon/new' do
         end
         erb :'pokemon/new'
     end
 
     post '/pokemon' do
         pokemon = Pokemon.create(params)
+        binding.pry
         user = Helpers.current_user(session)
         pokemon.user = user
-        pokemon.save
+        
+        if pokemon.empty?
+            redirect to '/pokemon/new'
+        else
+            pokemon.save
+        end
 
         redirect to "/users/#{user.id}"
     end
